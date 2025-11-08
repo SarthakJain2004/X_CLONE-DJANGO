@@ -1,0 +1,6 @@
+body { background: #f6f8fa; }
+.card { border-radius: 12px; }
+.navbar-brand { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+.like-btn .like-emoji { margin-right: 6px; }
+img { max-width: 100%; height: auto; }
+.form-control-sm { padding: .375rem .5rem; }

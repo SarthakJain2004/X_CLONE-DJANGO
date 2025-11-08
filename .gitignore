@@ -1,0 +1,31 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Django database
+db.sqlite3
+
+# Virtual environment folders
+.venv/
+venv/
+env/
+Scripts/
+bin/
+
+# Static & media (collected files)
+staticfiles/
+media/
+
+# Environment & secrets
+.env
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.log
+
+# System files
+.DS_Store
+Thumbs.db

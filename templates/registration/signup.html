@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  body {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    min-height: 100vh;
+  }
+  .auth-card {
+    max-width: 460px;
+    margin: 60px auto;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  }
+  .auth-header {
+    background: #ffffff;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+    padding-top: 20px;
+  }
+  .auth-body {
+    padding: 35px 40px;
+    background-color: #ffffff;
+    border-radius: 0 0 20px 20px;
+  }
+  .form-control {
+    border-radius: 10px;
+  }
+  .btn-custom {
+    border-radius: 10px;
+    width: 100%;
+    font-weight: 600;
+  }
+  .errorlist {
+    color: #dc3545;
+    font-size: 0.9rem;
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 4px;
+  }
+</style>
+
+<div class="auth-card card shadow-lg">
+  <div class="auth-header">
+    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828443.png" alt="register" width="80" class="mb-2">
+    <h3 class="fw-bold text-dark">Create Your Account ✨</h3>
+    <p class="text-muted mb-0">Join X-Clone today!</p>
+  </div>
+
+  <div class="auth-body">
+
+    <!-- ✅ Bootstrap Alerts -->
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <!-- ✅ Signup Form -->
+    <form method="post" novalidate>
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div class="mb-3">
+          <label class="form-label fw-semibold">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <ul class="errorlist">
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="btn btn-success btn-custom mt-2">Sign Up</button>
+    </form>
+
+    <p class="text-center text-muted mt-3 mb-0">
+      Already have an account? <a href="{% url 'login' %}">Login</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}
